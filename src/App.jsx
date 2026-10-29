@@ -1,9 +1,6 @@
-
-import './App.css'
+import "./App.css";
 
 function App() {
-  
-
   return (
     <>
       <h1>Netflix Clone Project</h1>
@@ -11,4 +8,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
