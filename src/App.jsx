@@ -1,9 +1,12 @@
 import "./App.css";
+import Header from './components/Header/Header';
+import Banner from './components/Banner/Banner';
 
 function App() {
   return (
     <>
-      <h1>Netflix Clone Project</h1>
+      <Header />
+      <Banner />
     </>
   );
 }

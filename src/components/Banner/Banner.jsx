@@ -1,40 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import NetflixBannerLogo from "../../assets/image/logo.png";
 import { Play, Info } from "lucide-react";
-import styles from "../styles/banner.module.css";
-import bannerLogo from "../../assets/image/logo.png";
+import styles from "./Banner.module.css";
 
 function Banner() {
   return (
     <div className={styles.banner}>
-      <div className={styles.content}>
-        <img src={bannerLogo} alt="Banner Logo" className={styles.logo} />
+      <div className={styles.contents}>
+        {/* netflix image */}
+        <img
+          className={styles.logoImg}
+          src={NetflixBannerLogo}
+          alt="Netflix logo"
+        />
 
-        {/* Title */}
+        {/* title */}
         <h1 className={styles.title}>Bridgerton</h1>
 
-        {/* Description */}
-        <h1 className={styles.desc}>
-          Inspired by Julia Quinn’s bestselling novels, Bridgerton follows the
-          eight close-knit siblings of the noble and powerful Bridgerton family
-          as they navigate the high-stakes, glittering, and scandal-filled
-          London social season during the Regency era.
+        {/* description */}
+        <h1 className={styles.description}>
+          Shondaland's Emmy-winning series brings Julia Quinn's novels to life,
+          as eight siblings seek their perfect match amid London's scandals and
+          soirées.
         </h1>
 
-        {/* Buttons */}
-        <div className={styles.btns}>
-          <button>
+        {/* buttons */}
+        <div className={styles.buttonContainer}>
+          <button className={styles.button}>
             <Play size={30} />
             Play
           </button>
-          <button>
+          <button className={styles.button}>
             <Info size={30} />
             My List
           </button>
         </div>
-
-        {/* Fading bottom */}
-        <div className={styles.fadeBox}></div>
       </div>
+
+      {/* fading */}
+      <div className={styles.fadeBottom}></div>
     </div>
   );
 }
