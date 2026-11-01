@@ -20,7 +20,7 @@ function SlideShow({ title, movies }) {
         >
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <MovieCard movie={movie} />
+              {/* <MovieCard movie={movie} /> */}
             </SwiperSlide>
           ))}
         </Swiper>
