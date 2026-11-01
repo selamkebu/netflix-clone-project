@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SlideShow.module.css";
-import MovieCard from "../MovieCard/MovieCard";
+// import MovieCard from "../MovieCard/MovieCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -20,7 +20,7 @@ function SlideShow({ title, movies }) {
         >
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <MovieCard movie={movie} />
+              {/* <MovieCard movie={movie} /> */}
             </SwiperSlide>
           ))}
         </Swiper>
