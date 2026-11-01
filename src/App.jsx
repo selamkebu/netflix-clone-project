@@ -1,9 +1,10 @@
 import "./App.css";
+import DisplayRow from "./components/DisplayRow/DisplayRow";
 
 function App() {
   return (
     <>
-      <h1>Netflix Clone Project</h1>
+      <DisplayRow />
     </>
   );
 }
