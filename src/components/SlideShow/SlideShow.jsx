@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "./SlideShow.module.css";
-// import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -16,11 +15,18 @@ function SlideShow({ title, movies }) {
           modules={[Navigation]}
           navigation
           spaceBetween={10}
-          slidesPerView={5.8}
+          // slidesPerView={5.8}
+          slidesPerView={2.3}
+          breakpoints={{
+            480: { slidesPerView: 3.2 },
+            768: { slidesPerView: 4.2 },
+            1024: { slidesPerView: 5.8 },
+            1440: { slidesPerView: 6.8 },
+          }}
         >
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              {/* <MovieCard movie={movie} /> */}
+              <MovieCard movie={movie} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -30,4 +36,3 @@ function SlideShow({ title, movies }) {
 }
 
 export default SlideShow;
-
