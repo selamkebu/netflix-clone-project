@@ -1,69 +1,94 @@
 .cardWrapper {
   position: relative;
-  width: 290px;
-  height: 198px;
+  /* display: inline-block;
+  height: 198px; */
   cursor: pointer;
   transition: transform 0.3s ease;
   overflow: visible;
   z-index: 1;
+  /* added style to make it responsive */
+   display: block;
+  width: 100%;
+
+
 }
+
+.cardWrapper:hover {
+  z-index: 100;
+}
+
 .poster {
-  width: 227px;
-  height: 128px;
+  /* width: 227px;
+  height: 128px; */
   border-radius: 6px;
   object-fit: cover;
   transition: transform 0.3s ease;
   position: relative;
   z-index: 2;
+  display: block;
+
+  
+
+  /* added style to make it responsive */
+  aspect-ratio: 227 / 128;
+   width: 100%;
+  height: auto;
 }
 
 .hoverCard {
   position: absolute;
-  top: -50px;
+  top: -28px;
   left: 50%;
   transform: translateX(-50%) scale(0.95);
   width: 320px;
+  /* make it responsive */
+  width: clamp(240px, 24vw, 320px);
   min-height: 305px;
   height: auto;
   background: #111;
   border-radius: 8px;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.8);
-
-  /* hidden by default */
   opacity: 0;
   visibility: hidden;
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease,
     transform 0.3s ease;
-
-  /* optimization */
   will-change: transform, opacity;
   backface-visibility: hidden;
   pointer-events: none;
   z-index: 999999;
 }
 
-.cardWrapper:hover .hoverCard {
+.cardWrapper:hover .hoverCard,
+.hoverCard:hover {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) scale(1);
   pointer-events: auto;
 }
 
-.hoverCard:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  pointer-events: auto;
-}
-
 .hoverImage {
   width: 100%;
   height: 130px;
+  /* make it responsive */
+   height: clamp(100px, 10vw, 130px);
   object-fit: cover;
   border-radius: 8px 8px 0 0;
+  display: block;
+}
+
+.circleButton {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  /* make it responsive */
+   width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+}
+
+.circleButton:hover {
+  transform: scale(1.05);
 }
 
 .badge {
@@ -84,52 +109,67 @@
   align-items: center;
 }
 
-.circleButton:hover {
-  transform: scale(1.05);
-}
-
 .metaRow {
   color: white;
   display: flex;
+  align-items: center;
   gap: 10px;
   margin: 8px 12px;
   font-size: 14px;
   font-weight: 500;
 }
 
+.tag {
+  color: #bbb;
+}
+
+.metaRow .tag:first-child,
+.metaRow .tag:last-child {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 4px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
 .circleButtonSmall {
   border-radius: 50%;
-  background: rgba(34, 34, 34, 0.8);
-  border: 1px solid #555;
   color: white;
-  font-size: 16px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-left: auto;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+  transition: transform 0.2s ease;
+  /* make it responsive */
+   width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
 }
 
 .circleButtonSmall:hover {
-  background: #333;
-  border-color: #777;
+  transform: scale(1.05);
 }
 
 .dot {
-  color: #888;
+  color: #bbb;
   margin: 0 4px;
 }
 
 .genres {
   color: #bbb;
-  font-size: 13px;
+  font-size: 12px;
   margin: 6px 12px 12px 12px;
   line-height: 1.4;
 }
 
-.tag {
-  color: #ddd;
+/* newly added style to make it responsive */
+/* Small screens: narrower hover card */
+@media screen and (max-width: 768px) {
+  .hoverCard {
+    width: 220px;
+    min-height: 0;
+  }
+}
+ 
+/* Touch devices have no hover, so hide the popup and keep the poster tappable */
+@media (hover: none) {
+  .hoverCard {
+    display: none;
+  }
 }

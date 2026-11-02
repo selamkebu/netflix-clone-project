@@ -1,9 +1,7 @@
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./DisplayRow.module.css";
 import SlideShow from "../SlideShow/SlideShow";
-// import { movies } from '../../data/data'
-import {MovieInstance} from "../../Utility/MovieInstance";
+import { MovieInstance } from "../../Utility/MovieInstance";
 import requests from "../../Utility/RequestUrls";
 
 const DisplayRow = () => {
@@ -21,7 +19,7 @@ const DisplayRow = () => {
   useEffect(() => {
     fetchMovies();
   }, []);
- 
+
   const fetchMovies = async () => {
     try {
       const [
@@ -54,20 +52,20 @@ const DisplayRow = () => {
         documentaries: documentariesResponse.data.results,
       });
     } catch (error) {
-      console.log("something wrong",error);
+      console.log("something wrong", error);
     }
   };
- console.log(movies);
+  console.log(movies);
   return (
     <div className={styles.mainWrapper}>
-      <SlideShow title="Netflix Trending" movie={movies.trending} />
-      <SlideShow title="Netflix Originals" movie={movies.netflixOriginals} />
-      <SlideShow title="Top Rated" movie={movies.topRated} />
-      <SlideShow title="Action" movie={movies.action} />
-      <SlideShow title="Comedy" movie={movies.comedy} />
-      <SlideShow title="Horror" movie={movies.horror} />
-      <SlideShow title="Romance" movie={movies.romance} />
-      <SlideShow title="Documentaries" movie={movies.documentaries} />
+      <SlideShow title="Netflix Trending" movies={movies.trending} />
+      <SlideShow title="Netflix Originals" movies={movies.netflixOriginals} />
+      <SlideShow title="Top Rated" movies={movies.topRated} />
+      <SlideShow title="Action" movies={movies.action} />
+      <SlideShow title="Comedy" movies={movies.comedy} />
+      <SlideShow title="Horror" movies={movies.horror} />
+      <SlideShow title="Romance" movies={movies.romance} />
+      <SlideShow title="Documentaries" movies={movies.documentaries} />
     </div>
   );
 };
