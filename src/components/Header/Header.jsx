@@ -25,16 +25,17 @@ const Header = () => {
         setIsScrolled(false);
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  },[]);
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.container}>
         {/* logo */}
 
-        <img className={styles.logo} src={logo} alt="" />
+        <img className={styles.logo} src={logo} alt="logo" />
 
         {/* navLinks */}
 
@@ -55,6 +56,8 @@ const Header = () => {
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className={styles.searchButton}
+              // ADDED: aria-label because the button only has an icon
+              aria-label="Search"
             >
               <Search size={20} />
             </button>
@@ -64,13 +67,16 @@ const Header = () => {
                 type="text"
                 placeholder="movie title"
                 className={styles.searchInput}
+                // ADDED: focuses the input as soon as it opens
+                autoFocus
               />
             )}
           </div>
 
           {/* notification */}
 
-          <button className={styles.iconButton}>
+          {/* ADDED: aria-label because the button only has an icon */}
+          <button className={styles.iconButton} aria-label="Notifications">
             <Bell size={20} />
             <span className={styles.notificationBadge}>3</span>
           </button>
@@ -81,6 +87,8 @@ const Header = () => {
             <button
               onClick={() => setIsProfileOpen(!isProfileOpen)}
               className={styles.profileButton}
+              // ADDED: aria-label because the button only has icons
+              aria-label="Profile menu"
             >
               <div className={styles.profileAvatar}>
                 <User size={20} />
@@ -89,8 +97,12 @@ const Header = () => {
             </button>
             {isProfileOpen && (
               <div className={styles.profileMenu}>
-                <Link className={styles.profileMenuItem}>Account</Link>
-                <Link className={styles.profileMenuItem}>help center</Link>
+                <Link to="#" className={styles.profileMenuItem}>
+                  Account
+                </Link>
+                <Link to="#" className={styles.profileMenuItem}>
+                  help center
+                </Link>
                 <hr className={styles.profileMenuDivider} />
                 <button className={styles.profileMenuItem}>Sign out</button>
               </div>
