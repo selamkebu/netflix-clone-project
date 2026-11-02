@@ -27,9 +27,9 @@
   flex-shrink: 0;
   width: 100px;
   height: 30px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 .logo:hover {
   opacity: 0.8;
@@ -271,4 +271,3 @@
     gap: 12px;
   }
 }
-
